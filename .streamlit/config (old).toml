@@ -1,0 +1,23 @@
+[theme]
+# The preset Streamlit theme that your custom theme inherits from.
+# One of "light" or "dark".
+base = "dark"
+
+# Primary accent color for interactive elements.
+primaryColor = "#87EBF5"
+
+# Background color for the main content area.
+backgroundColor = "#074A66"
+
+# Background color used for the sidebar and most interactive widgets.
+secondaryBackgroundColor = "#5A92AD"
+
+# Color used for almost all text.
+textColor = "White"
+
+# Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
+font="monospace"
+
+[client]
+# Controls whether the default sidebar page navigation in a multipage app is displayed.
+showSidebarNavigation = false
