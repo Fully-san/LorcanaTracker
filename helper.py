@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
+import requests
+from io import BytesIO
 
 #region Variables & Session State
 
@@ -18,10 +20,11 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
+
 @st.cache_data
-def load_image(url):
-    image = Image.open(url)
-    return image
+def download_image(url: str):
+    response = requests.get(url)
+    return BytesIO(response.content)
 
 def init():
     if 'allCards' not in st.session_state:
@@ -184,7 +187,10 @@ def drawMainContent(cards, allPage = False):
 # Fonction pour afficher nos cartes
 def drawComponent(col, card, allPage = False):
     with col:
-        st.image(load_image(card.Image), use_container_width = True)
+        image_bytes = download_image(card.Image)
+        image = Image.open(image_bytes)
+
+        st.image(image, use_container_width = True)
 
         if allPage:
             st.number_input(label=card.Name, value=card.OwnedNumber, label_visibility='collapsed', step=1, min_value=0, key=card.Id, on_change=saveCollection, args=(card.Id,))
