@@ -16,4 +16,4 @@ init()
 
 drawSidebard()
 
-drawMainContent(st.session_state.currentCards.loc[st.session_state.currentCards.ownedNumber == 0])
+drawMainContent(st.session_state.currentCards.loc[st.session_state.currentCards.OwnedNumber == 0])
