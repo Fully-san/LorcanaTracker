@@ -8,11 +8,18 @@ pageIcon = '📖'
 pageLayout = 'centered'
 sidebarState = 'expanded'
 
+
 url = 'Data/cards.csv'
+
+
+@st.cache_data
+def load_data(url):
+    df = pd.read_csv(url)
+    return df
 
 def init():
     if 'allCards' not in st.session_state:
-        st.session_state.allCards = pd.read_csv(url)
+        st.session_state.allCards = load_data(url)
 
     if 'currentCards' not in st.session_state:
         st.session_state.currentCards = st.session_state.allCards
