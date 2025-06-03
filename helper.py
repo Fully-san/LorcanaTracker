@@ -22,7 +22,7 @@ def init():
         st.session_state.allCards = load_data(url)
 
     if 'currentCards' not in st.session_state:
-        st.session_state.currentCards = st.session_state.allCards
+        st.session_state.currentCards = load_data(url) #st.session_state.allCards
 
     if 'name' not in st.session_state:
         st.session_state.name = ''
